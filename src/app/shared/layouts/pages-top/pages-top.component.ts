@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { GlobalService } from '../../services/global.service';
+import {Component, Input} from '@angular/core';
+import {GlobalService} from '../../services/global.service';
 
 @Component({
   selector: 'pages-top',
@@ -7,15 +7,16 @@ import { GlobalService } from '../../services/global.service';
   styleUrls: ['./pages-top.component.scss'],
 })
 export class PagesTopComponent {
-  avatarImgSrc: string = 'assets/images/avatar.png';
-  userName: string = 'Folisise Chosielie';
+  avatarImgSrc: string = 'assets/images/logo.png';
+  userName: string = 'test Chosielie';
   userPost: string = 'Musician, Player';
 
 
   sidebarToggle: boolean = true;
-  tip = { ring: true, email: true };
+  tip = {ring: true, email: true};
 
-  constructor(private _globalService: GlobalService) { }
+  constructor(private _globalService: GlobalService) {
+  }
 
   public _sidebarToggle() {
     /* this._globalService.sidebarToggle$.subscribe(sidebarToggle => {
