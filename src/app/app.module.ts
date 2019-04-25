@@ -6,6 +6,8 @@ import {routing} from './app.routing';
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ArticleService} from './shared/services/article.service';
+import {FamilleServices} from './shared/services/famille.service';
+import {EmplacementServices} from './shared/services/emplacement';
 
 @NgModule({
   imports: [
@@ -18,7 +20,7 @@ import {ArticleService} from './shared/services/article.service';
   declarations: [
     AppComponent,
   ],
-  providers: [ArticleService],
+  providers: [ArticleService, FamilleServices, EmplacementServices],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -1,3 +1,64 @@
-<p>
-  article-form works!
-</p>
+<form (ngSubmit)="valider()">
+
+  <card cardTitle="Ajouter un article" isCollapse="true">
+
+    <div class="form-group">
+      <label class="control-label">Code</label>
+      <input type="text" class="form-control" placeholder="Code" name="code" [(ngModel)]="article.referenceArt">
+    </div>
+
+
+    <div class="form-group">
+      <label class="control-label">Famille</label>
+      <select name="famille" id="select1" class="form-control" [(ngModel)]="article.codeFami">
+        <option *ngFor="let famille of famillesImmobilisation" value="{{famille}}">{{famille.desigFami}}</option>
+      </select>
+    </div>
+
+
+    <div class="form-group">
+      <label class="control-label">Désignation</label>
+      <input type="text" name="designArt" class="form-control" placeholder="Désignation"
+             [(ngModel)]="article.desigArt">
+    </div>
+
+    <div class="form-group">
+      <label class="control-label">Prix d'achat</label>
+      <input type="text" class="form-control" name="dernierPrix" placeholder="Prix D'achat"
+             [(ngModel)]="article.dernierPrix">
+    </div>
+
+    <div class="form-group">
+      <label class="control-label">Quantité globale</label>
+      <input type="text" class="form-control" name="quantiteGlobale" placeholder="Quantité globale"
+             [(ngModel)]="article.quantiteGlobale">
+    </div>
+
+
+    <div class="form-group">
+      <div class="col-md-4">
+        <input class="radio" type="radio" id="default-radio2" value="0" [(ngModel)]="article.desigType" name="radio"
+               checked>
+        <label class="radio-label" for="default-radio2">Sans Emplacement</label>
+      </div>
+      <div class="col-md-4 col-md-offset-4">
+        <input class="radio" type="radio" id="default-radio1" value="1" [(ngModel)]="article.desigType" name="radio">
+        <label class="radio-label" for="default-radio1">Avec Emplacement</label>
+      </div>
+    </div>
+
+
+    <div *ngIf="article.desigType == '1' " class="form-group">
+      <label class="control-label">Emplacement</label>
+      <select name="emplacement" id="emplacement" class="form-control" [(ngModel)]="article.codeEmp">
+        <option *ngFor="let emplacement of emplacements" value="{{emplacement}}">{{emplacement.code}}</option>
+      </select>
+    </div>
+
+
+    <div class="text-right" style="margin-top: 30px">
+      <button class="btn btn-primary" type="submit">Valider</button>
+    </div>
+
+  </card>
+</form>

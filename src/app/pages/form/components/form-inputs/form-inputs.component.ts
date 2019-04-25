@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {FamilleImmobilisation} from '../../../../shared/models/famille-immobilisation';
+import {FamilleServices} from '../../../../shared/services/famille.service';
 
 @Component({
   selector: 'app-form-inputs',
@@ -7,7 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormInputsComponent implements OnInit {
 
-  constructor() { }
+  famillesImmobilisation: FamilleImmobilisation[] = [];
 
-  ngOnInit() { }
+  constructor(private familleServices: FamilleServices) {
+  }
+
+  ngOnInit() {
+    this.getAllFamilles();
+  }
+
+  private getAllFamilles() {
+    this.familleServices.getAllFamille()
+      .subscribe(
+        (data: FamilleImmobilisation[]) => {
+          this.famillesImmobilisation = data;
+        }
+      );
+  }
 }
