@@ -13,10 +13,10 @@
         <tbody>
         <tr
           *ngFor="let item of articles | paginate: { id: 'pager', itemsPerPage: pageSize, currentPage: pageNumber};let index = index">
-          <td>{{item.reference_art}}</td>
-          <td>{{item.desig_art}}</td>
-          <td>{{item.dernier_prix}}</td>
-          <td>{{item.quantite_globale}}</td>
+          <td>{{item.referenceArt}}</td>
+          <td>{{item.desigArt}}</td>
+          <td>{{item.dernierPrix}}</td>
+          <td>{{item.quantiteGlobale}}</td>
           <td>
             <span class="label label-info">Modifier</span>
             <span class="label label-danger">Supprimer</span>

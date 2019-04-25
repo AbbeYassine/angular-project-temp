@@ -14,6 +14,6 @@ export class ArticleService {
   }
 
   getAllArticle() {
-    return this.http.get(Config.baseUrl + '/api/articles');
+    return this.http.get(Config.baseUrl + '/GestionImmobilisation-core/api/articles');
   }
 }
