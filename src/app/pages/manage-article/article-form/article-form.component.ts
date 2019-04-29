@@ -28,6 +28,7 @@ export class ArticleFormComponent implements OnInit {
 
   valider() {
     console.log(this.article);
+    
   }
 
   private getAllFamilles() {

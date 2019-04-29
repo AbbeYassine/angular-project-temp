@@ -1,0 +1,19 @@
+<form (ngSubmit)="valider()">
+
+  <card cardTitle="Ajouter un site" isCollapse="true">
+
+    <div class="form-group">
+      <label class="control-label">Code</label>
+      <input type="text" class="form-control" placeholder="Code" name="code" [(ngModel)]="site.codeSite">
+    </div>
+    <div class="form-group">
+      <label class="control-label">Désignation</label>
+      <input type="text" name="desigSite" class="form-control" placeholder="Désignation"
+             [(ngModel)]="site.desigSite">
+    </div>
+    <div class="text-right" style="margin-top: 30px">
+      <button class="btn btn-primary" type="submit">Valider</button>
+    </div>
+
+  </card>
+</form>

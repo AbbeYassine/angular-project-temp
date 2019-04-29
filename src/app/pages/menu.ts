@@ -15,6 +15,36 @@ export let MENU_ITEM = [
     ]
   },
   {
+    path: 'manage-site',
+    title: 'Gestion des sites',
+    icon: 'dashboard',
+    children: [
+      {
+        path: 'list',
+        title: 'List des sites'
+      },
+      {
+        path: 'add',
+        title: 'Ajouter un site'
+      }
+    ]
+  },
+  {
+    path: 'manage-emplacement',
+    title: 'Gestion des emplacements',
+    icon: 'dashboard',
+    children: [
+      {
+        path: 'list',
+        title: 'List des emplacement'
+      },
+      {
+        path: 'add',
+        title: 'Ajouter un emplacement'
+      }
+    ]
+  },
+ {
     path: 'index',
     title: 'Dashboard',
     icon: 'dashboard'

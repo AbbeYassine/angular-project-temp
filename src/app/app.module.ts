@@ -8,6 +8,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ArticleService} from './shared/services/article.service';
 import {FamilleServices} from './shared/services/famille.service';
 import {EmplacementServices} from './shared/services/emplacement';
+import { SiteService } from './shared/services/site.service';
 
 @NgModule({
   imports: [
@@ -20,7 +21,7 @@ import {EmplacementServices} from './shared/services/emplacement';
   declarations: [
     AppComponent,
   ],
-  providers: [ArticleService, FamilleServices, EmplacementServices],
+  providers: [ArticleService,SiteService, FamilleServices, EmplacementServices],
   bootstrap: [AppComponent]
 })
 export class AppModule {
