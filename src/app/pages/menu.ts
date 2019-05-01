@@ -5,11 +5,11 @@ export let MENU_ITEM = [
     icon: 'dashboard',
     children: [
       {
-        path: 'list',
+        path: 'article-list',
         title: 'List des articles'
       },
       {
-        path: 'add',
+        path: 'article-add',
         title: 'Ajouter un article'
       }
     ]
@@ -20,11 +20,11 @@ export let MENU_ITEM = [
     icon: 'dashboard',
     children: [
       {
-        path: 'list',
+        path: 'site-list',
         title: 'List des sites'
       },
       {
-        path: 'add',
+        path: 'site-add',
         title: 'Ajouter un site'
       }
     ]
@@ -35,16 +35,16 @@ export let MENU_ITEM = [
     icon: 'dashboard',
     children: [
       {
-        path: 'list',
+        path: 'emp-list',
         title: 'List des emplacement'
       },
       {
-        path: 'add',
+        path: 'emp-add',
         title: 'Ajouter un emplacement'
       }
     ]
   },
- {
+  {
     path: 'index',
     title: 'Dashboard',
     icon: 'dashboard'

@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Article} from '../../../shared/models/article';
 import {ArticleService} from '../../../shared/services/article.service';
-import {TablesDataService} from '../../table/components/data-table/tablesData.service';
 
 @Component({
   selector: 'app-article-list',
@@ -11,23 +10,47 @@ import {TablesDataService} from '../../table/components/data-table/tablesData.se
 export class ArticleListComponent implements OnInit {
 
   articles: Article[] = [];
+
+  //familles: FamilleImmobilisation[] = [];
   /* pagination Info */
   pageSize = 10;
   pageNumber = 1;
 
-  constructor(private articleService
+  constructor(private articleServices
                 : ArticleService) {
   }
 
   ngOnInit() {
-    this.articleService.getAllArticle()
+    this.articleServices.getAllArticle()
       .subscribe(
         (data: Article[]) => {
           this.articles = data;
+          this.articles.sort((a: Article, b: Article) => {
+            if (a.codeFami.codeFami < b.codeFami.codeFami) {
+              return -1;
+            }
+            if (a.codeFami.codeFami > b.codeFami.codeFami) {
+              return 1;
+            }
+            return 0;
+          });
+          console.log(this.articles);
         }
       );
   }
 
+
+  getArticleNumberPerCodeFami(codeFamille) {
+    let sum = 0;
+    this.articles.forEach(
+      article => {
+        if (article.codeFami.codeFami === codeFamille) {
+          sum++;
+        }
+      }
+    );
+    return sum;
+  }
 
   pageChanged(pN: number): void {
     this.pageNumber = pN;

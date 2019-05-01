@@ -4,6 +4,7 @@
       <table class="table table-bordered table-hover">
         <thead>
         <tr>
+          <th>Famille</th>
           <th>Référence</th>
           <th>Désignation</th>
           <th>Dernier Prix</th>
@@ -12,7 +13,13 @@
         </thead>
         <tbody>
         <tr
-          *ngFor="let item of articles | paginate: { id: 'pager', itemsPerPage: pageSize, currentPage: pageNumber};let index = index">
+          *ngFor="let item of articles | paginate: { id: 'pager', itemsPerPage: pageSize, currentPage: pageNumber};let i = index">
+          <td *ngIf="i==0 || articles[i].referenceArt != articles[i-1].referenceArt"
+              [attr.rowspan]="getArticleNumberPerCodeFami(item.codeFami.codeFami)">{{item.codeFami.desigFami}}
+          </td>
+
+          <td>{{item.desigFami}}</td>
+
           <td>{{item.referenceArt}}</td>
           <td>{{item.desigArt}}</td>
           <td>{{item.dernierPrix}}</td>

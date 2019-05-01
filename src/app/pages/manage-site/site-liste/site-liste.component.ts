@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { SiteService } from '../../../shared/services/site.service';
-import { Site } from '../../../shared/models/site';
+import {Component, OnInit} from '@angular/core';
+import {SiteService} from '../../../shared/services/site.service';
+import {Site} from '../../../shared/models/site';
 
 @Component({
   selector: 'app-site-liste',
@@ -8,21 +8,23 @@ import { Site } from '../../../shared/models/site';
   styleUrls: ['./site-liste.component.scss']
 })
 export class SiteListeComponent implements OnInit {
-  sites : Site[]=[];
-  constructor(protected siteService: SiteService) { }
+  sites: Site[] = [];
+
+  constructor(protected siteService: SiteService) {
+  }
 
   ngOnInit() {
     this.loadAllSite();
   }
-  loadAllSite(){
+
+  loadAllSite() {
     this.siteService.getAllSite()
-    .subscribe(
-      (data: Site[])=>
-    {
-      this.sites=data;
-      console.log(data)
-    }
-    );
+      .subscribe(
+        (data: Site[]) => {
+          this.sites = data;
+          console.log(data);
+        }
+      );
   }
 
 }

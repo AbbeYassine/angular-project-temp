@@ -8,9 +8,9 @@ const childRoutes: Routes = [
     path: '',
     component: ManageArticleComponent,
     children: [
-      {path: '', redirectTo: 'add', pathMatch: 'full'},
-      {path: 'add', component: ArticleFormComponent},
-      {path: 'list', component: ArticleListComponent}
+      {path: '', redirectTo: 'article-add', pathMatch: 'full'},
+      {path: 'article-add', component: ArticleFormComponent},
+      {path: 'article-list', component: ArticleListComponent}
     ]
   }
 ];

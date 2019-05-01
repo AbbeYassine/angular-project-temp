@@ -8,7 +8,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ArticleService} from './shared/services/article.service';
 import {FamilleServices} from './shared/services/famille.service';
 import {EmplacementServices} from './shared/services/emplacement';
-import { SiteService } from './shared/services/site.service';
+import {EmplacementService} from './shared/services/emplacement.service';
+import {SiteService} from './shared/services/site.service';
 
 @NgModule({
   imports: [
@@ -21,7 +22,7 @@ import { SiteService } from './shared/services/site.service';
   declarations: [
     AppComponent,
   ],
-  providers: [ArticleService,SiteService, FamilleServices, EmplacementServices],
+  providers: [ArticleService, EmplacementService, FamilleServices, EmplacementServices, SiteService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

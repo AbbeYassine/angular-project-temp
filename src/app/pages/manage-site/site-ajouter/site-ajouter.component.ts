@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Site } from '../../../shared/models/site';
-import { SiteService } from '../../../shared/services/site.service';
+import {Component, OnInit} from '@angular/core';
+import {Site} from '../../../shared/models/site';
 
 @Component({
   selector: 'app-site-ajouter',
@@ -8,20 +7,19 @@ import { SiteService } from '../../../shared/services/site.service';
   styleUrls: ['./site-ajouter.component.scss']
 })
 export class SiteAjouterComponent implements OnInit {
-  site : Site=new Site();
-  
+  site: Site = new Site();
 
-  constructor() { }
+
+  constructor() {
+  }
 
   ngOnInit() {
   }
+
   valider() {
     console.log(this.site);
-    
+
   }
-  
 
-
-  
 
 }
