@@ -1,33 +1,53 @@
-<form (ngSubmit)="valider()">
+<form #f="ngForm" (ngSubmit)="valider()">
 
   <card cardTitle="Ajouter un article" isCollapse="true">
 
 
-
-    <div class="form-group">
+    <div class="form-group {{codeFamille.errors && (codeFamille.dirty || codeFamille.touched) ? 'has-error' :''}}">
       <label class="control-label">Famille</label>
-      <select name="famille" id="select1" class="form-control" [(ngModel)]="article.codeFami">
-        <option *ngFor="let famille of famillesImmobilisation" value="{{famille.codeFami}}">{{famille.desigFami}}</option>
+      <select name="famille" id="select1" class="form-control" #codeFamille="ngModel" [(ngModel)]="article.codeFami"
+              required>
+        <option *ngFor="let famille of famillesImmobilisation" value="{{famille.codeFami}}">{{famille.desigFami}}
+        </option>
       </select>
+
+      <label *ngIf="codeFamille.errors && (codeFamille.dirty || codeFamille.touched)"
+             class="has-error">Ce champs
+        est
+        obligatoire.</label>
     </div>
 
-
-    <div class="form-group">
+    <div class="form-group {{desigArt.errors && (desigArt.dirty || desigArt.touched) ? 'has-error' :''}}">
       <label class="control-label">Désignation</label>
-      <input type="text" name="designArt" class="form-control" placeholder="Désignation"
-             [(ngModel)]="article.desigArt">
+      <input type="text" name="designArt" #desigArt="ngModel" class="form-control" placeholder="Désignation"
+             [(ngModel)]="article.desigArt" required>
+
+      <label *ngIf="desigArt.errors && (desigArt.dirty || desigArt.touched)"
+             class="has-error">Ce champs
+        est
+        obligatoire.</label>
     </div>
 
-    <div class="form-group">
+    <div class="form-group {{dernPrice.errors && (dernPrice.dirty || dernPrice.touched) ? 'has-error' :''}}">
       <label class="control-label">Prix d'achat</label>
-      <input type="text" class="form-control" name="dernierPrix" placeholder="Prix D'achat"
-             [(ngModel)]="article.dernierPrix">
+      <input type="text" class="form-control" #dernPrice="ngModel" name="dernierPrix" placeholder="Prix D'achat"
+             [(ngModel)]="article.dernierPrix" required>
+
+      <label *ngIf="dernPrice.errors && (dernPrice.dirty || dernPrice.touched)"
+             class="has-error">Ce champs
+        est
+        obligatoire.</label>
     </div>
 
-    <div class="form-group">
+    <div class="form-group {{quantGlob.errors && (quantGlob.dirty || quantGlob.touched) ? 'has-error' :''}}">
       <label class="control-label">Quantité globale</label>
-      <input type="text" class="form-control" name="quantiteGlobale" placeholder="Quantité globale"
-             [(ngModel)]="article.quantiteGlobale">
+      <input type="text" class="form-control" #quantGlob="ngModel" name="quantiteGlobale" placeholder="Quantité globale"
+             [(ngModel)]="article.quantiteGlobale" required>
+
+      <label *ngIf="quantGlob.errors && (quantGlob.dirty || quantGlob.touched)"
+             class="has-error">Ce champs
+        est
+        obligatoire.</label>
     </div>
 
 
@@ -44,15 +64,23 @@
     </div>
 
 
-    <div *ngIf="article.desigType == '1' " class="form-group">
+    <div *ngIf="article.desigType == '1' "
+         class="form-group {{article.desigType== '1' && (empl.dirty || empl.touched) ? 'has-error' : ''}}">
       <label class="control-label">Emplacement</label>
-      <select name="emplacement" id="emplacement" class="form-control" [(ngModel)]="article.codeEmp">
-        <option *ngFor="let emplacement of emplacements" value="{{emplacement.codeEmp}}">{{emplacement.desigEmp}}</option>
+      <select #empl="ngModel" name="emplacement" id="emplacement" class="form-control" [(ngModel)]="article.codeEmp">
+        <option *ngFor="let emplacement of emplacements" value="{{emplacement.codeEmp}}">{{emplacement.desigEmp}}
+        </option>
       </select>
+
+      <label *ngIf="article.desigType== '1' && (empl.dirty || empl.touched)"
+             class="has-error">Ce champs
+        est
+        obligatoire.</label>
     </div>
     <div class="text-right">
-      <button type="button" class="btn btn-success btn-with-icon">
-        <i class="fa fa-check fa-fw"></i>Valider</button>
+      <button type="button" [disabled]="f.invalid" class="btn btn-success btn-with-icon">
+        <i class="fa fa-check fa-fw"></i>Valider
+      </button>
     </div>
   </card>
 </form>
