@@ -49,6 +49,7 @@ export class ArticleListComponent implements OnInit {
         }
       }
     );
+    console.log(sum);
     return sum;
   }
 

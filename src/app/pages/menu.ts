@@ -1,7 +1,37 @@
 export let MENU_ITEM = [
   {
+    path: 'manage-emplacement',
+    title: 'Gestion des emplacements',
+    icon: 'dashboard',
+    children: [
+      {
+        path: 'emp-list',
+        title: 'List des emplacement'
+      },
+      {
+        path: 'emp-add',
+        title: 'Ajouter un emplacement'
+      }
+    ]
+  },
+  {
+    path: 'manage-famille',
+    title: 'Gestion des familles',
+    icon: 'dashboard',
+    children: [
+      {
+        path: 'famille-list',
+        title: 'List des familles'
+      },
+      {
+        path: 'famille-add',
+        title: 'Ajouter un famille'
+      }
+    ]
+  },
+  {
     path: 'manage-article',
-    title: 'Gestion des article',
+    title: 'Gestion des articles',
     icon: 'dashboard',
     children: [
       {
@@ -30,17 +60,47 @@ export let MENU_ITEM = [
     ]
   },
   {
-    path: 'manage-emplacement',
-    title: 'Gestion des emplacements',
+    path: 'manage-fournisseur',
+    title: 'Gestion des fournisseurs',
     icon: 'dashboard',
     children: [
       {
-        path: 'emp-list',
-        title: 'List des emplacement'
+        path: 'fournisseur-list',
+        title: 'List des fournisseurs'
       },
       {
-        path: 'emp-add',
-        title: 'Ajouter un emplacement'
+        path: 'fournisseur-add',
+        title: 'Ajouter un fournisseur'
+      }
+    ]
+  },
+  {
+    path: 'manage-immobilisation',
+    title: 'Gestion des immobilisations',
+    icon: 'dashboard',
+    children: [
+      {
+        path: 'immobilisation-list',
+        title: 'List des immobilisations'
+      },
+      {
+        path: 'immobilisation-add',
+        title: 'Ajouter une immobilisation'
+      }
+    ]
+  },
+  {
+    path: 'manage-reception',
+    title: 'Gestion des bons de réception',
+    icon: 'dashboard',
+    children: [
+      {
+        path: 'reception-list',
+        title: 'List des bons de réception'
+      },
+      {
+        path: 'reception-add',
+        title: 'Ajouter un bon de réception'
       }
     ]
   },

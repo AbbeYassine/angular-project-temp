@@ -4,6 +4,7 @@ import {Emplacement} from '../../../shared/models/emplacement';
 import {FamilleImmobilisation} from '../../../shared/models/famille-immobilisation';
 import {FamilleServices} from '../../../shared/services/famille.service';
 import {EmplacementServices} from '../../../shared/services/emplacement';
+import { ArticleService } from '../../../shared/services/article.service';
 
 @Component({
   selector: 'app-article-form',
@@ -18,7 +19,8 @@ export class ArticleFormComponent implements OnInit {
 
 
   constructor(private familleServices: FamilleServices,
-              private emplacementServices: EmplacementServices) {
+              private emplacementServices: EmplacementServices,
+              private articleServices : ArticleService) {
   }
 
   ngOnInit() {
@@ -28,6 +30,16 @@ export class ArticleFormComponent implements OnInit {
 
   valider() {
     console.log(this.article);
+
+    this.articleServices.addArticle(this.article)
+      .subscribe(
+        (data)=>{
+          console.log(data);
+        },
+        (error)=> {
+          
+        }
+      )
     
   }
 

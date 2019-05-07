@@ -23,9 +23,13 @@ export const childRoutes: Routes = [
       {path: 'menu-levels', loadChildren: './menu-levels/menu-levels.module#MenuLevelsModule'},
       {path: 'manage-article', loadChildren: './manage-article/manage-article.module#ManageArticleModule'},
       {path: 'manage-site', loadChildren: './manage-site/manage-site.module#ManageSiteModule'},
-      {path: 'manage-emplacement', loadChildren: './manage-emplacement/manage-emplacement.module#ManageEmplacementModule'}
+      {path: 'manage-emplacement', loadChildren: './manage-emplacement/manage-emplacement.module#ManageEmplacementModule'},
+      {path: 'manage-famille', loadChildren: './manage-famille/manage-famille.module#ManageFamilleModule'},
+      {path: 'manage-fournisseur', loadChildren: './manage-fournisseur/manage-fournisseur.module#ManageFournisseurModule'},
+      {path: 'manage-reception', loadChildren: './manage-reception/manage-reception.module#ManageReceptionModule'},
+      {path: 'manage-immobilisation', loadChildren: './manage-immobilisation/manage-immobilisation.module#ManageImmobilisationModule'}
       
-      
+    
     ]
   }
 ];

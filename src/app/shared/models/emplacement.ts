@@ -1,7 +1,7 @@
 import {Site} from './site';
 
 export class Emplacement {
-  codeEmp: number;
+  codeEmp: String;
   desigEmp: string;
   codeSite: Site = new Site();
 }
