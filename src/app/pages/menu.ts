@@ -74,6 +74,21 @@ export let MENU_ITEM = [
       }
     ]
   },
+{
+    path: 'manage-reception',
+    title: 'Gestion des bons de réception',
+    icon: 'dashboard',
+    children: [
+      {
+        path: 'reception-list',
+        title: 'List des bons de réception'
+      },
+      {
+        path: 'reception-add',
+        title: 'Ajouter un bon de réception'
+      }
+    ]
+  },
   {
     path: 'manage-immobilisation',
     title: 'Gestion des immobilisations',
@@ -90,17 +105,28 @@ export let MENU_ITEM = [
     ]
   },
   {
-    path: 'manage-reception',
-    title: 'Gestion des bons de réception',
+    path: 'manage-maintenances',
+    title: 'Gestion des opérations de maintenances',
     icon: 'dashboard',
     children: [
       {
-        path: 'reception-list',
-        title: 'List des bons de réception'
+        path: 'maintenance-list',
+        title: 'List des opérations de maintenances'
+      }
+    ]
+  },
+  {
+    path: 'manage-cession',
+    title: 'Gestion des immobilisations en cession',
+    icon: 'dashboard',
+    children: [
+      {
+        path: 'cession-list',
+        title: 'List des immobilisations en cession'
       },
       {
-        path: 'reception-add',
-        title: 'Ajouter un bon de réception'
+        path: 'cession-add',
+        title: 'Ajouter une cession'
       }
     ]
   },

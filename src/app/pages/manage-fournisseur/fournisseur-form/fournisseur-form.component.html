@@ -1,3 +1,52 @@
-<p>
-  fournisseur-form works!
-</p>
+<form (ngSubmit)="valider()">
+
+  <card cardTitle="Ajouter un fournisseur" isCollapse="true">
+
+    <div class="form-group">
+      <label class="control-label">Code</label>
+      <input type="text" name="codeFr" class="form-control" placeholder="Code"
+             [(ngModel)]="fournisseur.codeFr">
+    </div>
+
+    <div class="form-group">
+      <label class="control-label">Raison sociale</label>
+      <input type="text" name="raisonSocial" class="form-control" placeholder="Raison sociale"
+             [(ngModel)]="fournisseur.raisonSocial">
+    </div>
+    <div class="form-group">
+      <label class="control-label">A contacter</label>
+      <input type="text" name="aContacter" class="form-control" placeholder="A contacter"
+             [(ngModel)]="fournisseur.aContacter">
+    </div>
+    <div class="form-group">
+      <label class="control-label">Téléphone</label>
+      <input type="text" name="telephoneFr" class="form-control" placeholder="Téléphone"
+             [(ngModel)]="fournisseur.telephoneFr">
+    </div>
+    <div class="form-group">
+      <label class="control-label">Fax</label>
+      <input type="text" name="faxFr" class="form-control" placeholder="Fax"
+             [(ngModel)]="fournisseur.faxFr">
+    </div>
+    <div class="form-group">
+      <label class="control-label">E-mail</label>
+      <input type="text" name="emailFr" class="form-control" placeholder="E-mail"
+             [(ngModel)]="fournisseur.emailFr">
+    </div>
+    <div class="form-group">
+      <label class="control-label">Site Web</label>
+      <input type="text" name="siteFr" class="form-control" placeholder="Site Web"
+             [(ngModel)]="fournisseur.siteFr">
+    </div>
+    <div class="form-group">
+      <label class="control-label">Adresse</label>
+      <input type="text" name="adresseFr" class="form-control" placeholder="Adresse"
+             [(ngModel)]="fournisseur.adresseFr">
+    </div>
+    <div class="text-right">
+      <button type="button" class="btn btn-success btn-with-icon">
+        <i class="fa fa-check fa-fw"></i>Valider</button>
+    </div>
+  </card>
+</form>
+

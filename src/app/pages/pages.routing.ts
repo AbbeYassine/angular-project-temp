@@ -27,9 +27,9 @@ export const childRoutes: Routes = [
       {path: 'manage-famille', loadChildren: './manage-famille/manage-famille.module#ManageFamilleModule'},
       {path: 'manage-fournisseur', loadChildren: './manage-fournisseur/manage-fournisseur.module#ManageFournisseurModule'},
       {path: 'manage-reception', loadChildren: './manage-reception/manage-reception.module#ManageReceptionModule'},
-      {path: 'manage-immobilisation', loadChildren: './manage-immobilisation/manage-immobilisation.module#ManageImmobilisationModule'}
-      
-    
+      {path: 'manage-immobilisation', loadChildren: './manage-immobilisation/manage-immobilisation.module#ManageImmobilisationModule'},
+      {path: 'manage-maintenances', loadChildren: './manage-maintenances/manage-maintenances.module#ManageMaintenancesModule'},
+      {path: 'manage-cession', loadChildren: './manage-cession/manage-cession.module#ManageCessionModule'}
     ]
   }
 ];

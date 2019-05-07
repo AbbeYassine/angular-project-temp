@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CessionListComponent } from './src/app/pages/manage-cession/cession-list/cession-list.component';
-import { CessionFormComponent } from './src/app/pages/manage-cession/cession-form/cession-form.component';
+import { CessionListComponent } from './cession-list/cession-list.component';
+import { CessionFormComponent } from './cession-form/cession-form.component';
+import { ManageCessionComponent } from './manage-cession.component';
 
 @NgModule({
   imports: [
     CommonModule
   ],
-  declarations: [CessionListComponent, CessionFormComponent]
+  declarations: [ManageCessionComponent,CessionListComponent, CessionFormComponent]
 })
 export class ManageCessionModule { }

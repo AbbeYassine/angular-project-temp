@@ -18,6 +18,6 @@ import { ManageFournisseurComponent } from './manage-fournisseur.component';
     ModalModule,
     routing
   ],
-  declarations: [FournisseurListComponent, FournisseurFormComponent]
+  declarations: [ManageFournisseurComponent, FournisseurListComponent, FournisseurFormComponent]
 })
 export class ManageFournisseurModule { }
