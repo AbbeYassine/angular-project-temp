@@ -1,39 +1,104 @@
 <form [ngBusy]="busy" #f="ngForm" (ngSubmit)="valider()">
 
-    <card cardTitle="Ajouter un bon de reception" isCollapse="true">
-  
-      <div class="form-group {{numeroBonRecep.errors && (numeroBonRecep.dirty || numeroBonRecep.touched) ? 'has-error' :''}}">
-        <label class="control-label">Numero</label>
-        <input type="text" name="numeroBonRecep" #numeroBonRecep="ngModel" class="form-control" placeholder="Numero"
-               [(ngModel)]="bondereception.numeroBonRecep"required>
-          <label *ngIf="numeroBonRecep.errors && (numeroBonRecep.dirty || numeroBonRecep.touched)"
-               class="has-error">Ce champs
-          est
-          obligatoire.</label>
-      </div>
-  
-      <div class="form-group {{codeFr.errors && (codeFr.dirty || codeFr.touched) ? 'has-error' :''}}">
-          <label class="control-label">Fournisseur</label>
-          <select name="codeFr" id="select1" class="form-control" #codeFr="ngModel" [(ngModel)]="bondereception.codeFr"
-                       required>
-             <option *ngFor="let fournisseur of fournisseurs" value="{{Fournisseur.codeFr}}">{{fournisseur.codeFr}}
-                 </option>
-               </select>
-              <label *ngIf="codeFr.errors && (codeFr.dirty || codeFr.touched)"
-                      class="has-error">Ce champs
-                 est
-                 obligatoire.</label>
-         </div>
-      <div class="text-right">
-          <a href="javascript:" class="btn btn-danger btn-with-icon"
-                  [routerLink]="['/pages/manage-reception/reception-list']">
-            <i class="fa fa-check fa-fw"></i>Fermer
+  <card cardTitle="Ajouter un bon de reception" isCollapse="true">
+
+    <div class="form-group {{codeFr.errors && (codeFr.dirty || codeFr.touched) ? 'has-error' :''}}">
+      <label class="control-label">Fournisseur</label>
+      <select name="codeFr" id="select1" class="form-control" #codeFr="ngModel" [(ngModel)]="bondereception.codeFr"
+              required>
+        <option *ngFor="let fournisseur of fournisseurs" value="{{fournisseur.codeFr}}">{{fournisseur.codeFr}}
+        </option>
+      </select>
+      <label *ngIf="codeFr.errors && (codeFr.dirty || codeFr.touched)"
+             class="has-error">Ce champs
+        est
+        obligatoire.</label>
+    </div>
+
+    <div class="form-group {{dateBonR.errors && (dateBonR.dirty || dateBonR.touched) ? 'has-error' :''}}">
+      <label class="control-label">Date</label>
+
+      <input type="date" name="dateBonR" #dateBonR="ngModel" class="form-control" placeholder="Date"
+             [(ngModel)]="bondereception.date" required>
+
+      <label *ngIf="dateBonR.errors && (dateBonR.dirty || dateBonR.touched)"
+             class="has-error">Ce champs
+        est
+        obligatoire.</label>
+    </div>
+
+    <table class="table table-bordered table-hover">
+      <thead>
+      <tr>
+        <th>Référence</th>
+        <th>Désignation</th>
+        <th>Quantité</th>
+        <th>Prix Unitaire</th>
+        <th>Remise</th>
+        <th>Montant HT</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr
+        *ngFor="let item of bondereception.ligneRecepetions;let i = index">
+        <td>
+          <span *ngIf="(i+1)!=bondereception.ligneRecepetions.length">
+          {{item.refArt}}
+            </span>
+          <span *ngIf="(i+1)==bondereception.ligneRecepetions.length">
+            <select name="article" class="form-control"
+                    [(ngModel)]="item.refArt" (ngModelChange)="changeArticle($event,i)">
+        <option *ngFor="let article of articles" value="{{article.referenceArt}}">{{article.referenceArt}}
+        </option>
+      </select>
+          </span>
+        </td>
+        <td>
+          {{item.designation}}
+        </td>
+        <td>
+          <span *ngIf="(i+1)!=bondereception.ligneRecepetions.length">
+          {{item.quantite}}
+          </span>
+          <span *ngIf="(i+1)==bondereception.ligneRecepetions.length">
+          <input type="number" name="quantity" class="form-control" placeholder="Quantité"
+                 [(ngModel)]="item.quantite">
+          </span>
+        </td>
+        <td>{{item.prix_unitaire}}</td>
+        <td>
+          <span *ngIf="(i+1)!=bondereception.ligneRecepetions.length">
+          {{item.remise}}
+          </span>
+          <span *ngIf="(i+1)==bondereception.ligneRecepetions.length">
+          <input type="number" max="100" min="0" name="remise" class="form-control" placeholder="Quantité"
+                 [(ngModel)]="item.remise">
+          </span>
+        </td>
+        <td>{{(item.quantite * item.prix_unitaire)-((item.quantite*item.prix_unitaire)*item.remise/100)}}</td>
+        <td>
+          <a *ngIf="(i+1)==bondereception.ligneRecepetions.length" href="javascript:" (click)="addLigne()">
+            <span class="label label-info">Ajouter</span>
           </a>
-          <button type="button" [disabled]="f.invalid" class="btn btn-success btn-with-icon">
-            <i class="fa fa-check fa-fw"></i>Valider
-          </button>
-        </div>
-    </card>
-  </form>
-  
+          <a href="javascript:" (click)="deleteLigne(i)">
+            <span class="label label-danger">Supprimer</span>
+          </a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+
+    <div class="text-right">
+      <a href="javascript:" class="btn btn-danger btn-with-icon"
+         [routerLink]="['/pages/manage-reception/reception-list']">
+        <i class="fa fa-check fa-fw"></i>Fermer
+      </a>
+      <button type="submit" class="btn btn-success btn-with-icon">
+        <i class="fa fa-check fa-fw"></i>Valider
+      </button>
+    </div>
+  </card>
+</form>
   

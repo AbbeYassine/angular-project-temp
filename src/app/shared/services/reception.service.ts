@@ -1,8 +1,7 @@
 import {Injectable} from '@angular/core';
-import {Subject} from 'rxjs/Subject';
 import {HttpClient} from '@angular/common/http';
 import {Config} from '../config';
-import { BonDeReception } from '../models/BonDeReception';
+import {BonDeReception, BonDeReceptionDTO} from '../models/BonDeReception';
 /* models */
 
 /* import { TabMenuModel } from '../models/tabs-model';
@@ -18,16 +17,19 @@ export class ReceptionService {
     return this.http.get(Config.baseUrl + '/GestionImmobilisation-core/api/bondereceptions');
   }
 
-  addReception(reception : BonDeReception){
-    return this.http.post(Config.baseUrl + "/GestionImmobilisation-core/api/bondereceptions",reception)
+  addReception(reception: BonDeReceptionDTO) {
+    return this.http.post(Config.baseUrl + '/GestionImmobilisation-core/api/bondereceptions', reception);
   }
-  getReceptionById(receptionId : string){
-    return this.http.get(Config.baseUrl + "/GestionImmobilisation-core/api/bondereceptions"+receptionId );
+
+  getReceptionById(receptionId: string) {
+    return this.http.get(Config.baseUrl + '/GestionImmobilisation-core/api/bondereceptions' + receptionId);
   }
-  editReception(receptionId  : string ,reception :BonDeReception){
-    return this.http.put(Config.baseUrl + "/GestionImmobilisation-core/api/bondereceptions"+receptionId ,reception);
+
+  editReception(receptionId: string, reception: BonDeReceptionDTO) {
+    return this.http.put(Config.baseUrl + '/GestionImmobilisation-core/api/bondereceptions' + receptionId, reception);
   }
-  deleteReception(receptionId  :string){
-    return this.http.delete(Config.baseUrl +"/GestionImmobilisation-core/api/bondereceptions"+receptionId );
+
+  deleteReception(receptionId: string) {
+    return this.http.delete(Config.baseUrl + '/GestionImmobilisation-core/api/bondereceptions' + receptionId);
   }
 }

@@ -1,8 +1,8 @@
-export class DetailAmort{
+export class DetailAmort {
   idLigneAmort: number;
-    date: Date;
-    valeurBrute: number;
-    dotationAuxAmort: number;
-    amortCumule: number;
-    valeurNette: number;
-  }
+  date: string;
+  valeurBrute: number;
+  dotationAuxAmort: number;
+  amortCumule: number;
+  valeurNette: number;
+}

@@ -1,3 +1,167 @@
-<p>
-  immobilisation-form works!
-</p>
+<form [ngBusy]="busy" #f="ngForm" (ngSubmit)="valider()">
+
+  <card cardTitle="Ajouter d'une Immobilisation" isCollapse="true">
+
+    <div class="form-group {{codeArt.errors && (codeArt.dirty || codeArt.touched) ? 'has-error' :''}}">
+      <label class="control-label">Article</label>
+      <select name="codeArt" id="select1" class="form-control" #codeArt="ngModel" (ngModelChange)="onChangeArt($event)"
+              [(ngModel)]="immobilisation.refArt"
+              required>
+        <option *ngFor="let article of articles" value="{{article.referenceArt}}">{{article.referenceArt}}
+        </option>
+      </select>
+      <label *ngIf="codeArt.errors && (codeArt.dirty || codeArt.touched)"
+             class="has-error">Ce champs
+        est
+        obligatoire.</label>
+    </div>
+
+    <div class="form-group {{famArt.errors && (famArt.dirty || famArt.touched) ? 'has-error' :''}}">
+      <label class="control-label">Famille</label>
+      <input type="number" name="famArt" class="form-control" #famArt="ngModel" placeholder="Famille"
+             [(ngModel)]="immobilisation.codeFam" disabled>
+      <label *ngIf="famArt.errors && (famArt.dirty || famArt.touched)"
+             class="has-error">Ce champs
+        est
+        obligatoire.</label>
+    </div>
+
+
+    <div class="form-group {{codeFr.errors && (codeFr.dirty || codeFr.touched) ? 'has-error' :''}}">
+      <label class="control-label">Fournisseur</label>
+      <select name="codeFr" class="form-control" #codeFr="ngModel" (ngModelChange)="onChangeFr($event)"
+              [(ngModel)]="immobilisation.codeFr"
+              required>
+        <option *ngFor="let fournisseur of fournisseurs" value="{{fournisseur.codeFr}}">
+          {{fournisseur.codeFr}}
+        </option>
+      </select>
+      <label *ngIf="codeFr.errors && (codeFr.dirty || codeFr.touched)"
+             class="has-error">Ce champs
+        est
+        obligatoire.</label>
+    </div>
+
+    <div class="form-group {{facF.errors && (facF.dirty || facF.touched) ? 'has-error' :''}}">
+      <label class="control-label">N°Facture Fournisseur</label>
+      <select name="facF" class="form-control" #facF="ngModel" (ngModelChange)="onChangeFr($event)"
+              [(ngModel)]="immobilisation.referenceFact"
+              required>
+        <option *ngFor="let fournisseur of fournisseurs" value="{{fournisseur.codeFr}}">
+          {{fournisseur.codeFr}}
+        </option>
+      </select>
+      <label *ngIf="facF.errors && (facF.dirty || facF.touched)"
+             class="has-error">Ce champs
+        est
+        obligatoire.
+        obligatoire.</label>
+    </div>
+
+    <div class="form-group {{emp.errors && (emp.dirty || emp.touched) ? 'has-error' :''}}">
+      <label class="control-label">Emplacement</label>
+      <select name="emp" class="form-control" #emp="ngModel" (ngModelChange)="onChangeFr($event)"
+              [(ngModel)]="immobilisation.codeEmp"
+              required>
+        <option *ngFor="let emplacement of emplacements" value="{{emplacement.codeEmp}}">
+          {{emplacement.codeEmp}}
+        </option>
+      </select>
+      <label *ngIf="emp.errors && (emp.dirty || emp.touched)"
+             class="has-error">Ce champs
+        est
+        obligatoire.</label>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group {{price.errors && (price.dirty || price.touched) ? 'has-error' :''}}">
+          <label class="control-label">Valeur d'achat</label>
+
+          <input type="number" name="price" class="form-control" #price="ngModel" placeholder="Quantité"
+                 [(ngModel)]="immobilisation.priceArt" disabled>
+          <label *ngIf="price.errors && (price.dirty || price.touched)"
+                 class="has-error">Ce champs
+            est
+            obligatoire.</label>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group {{tauxAmort.errors && (tauxAmort.dirty || tauxAmort.touched) ? 'has-error' :''}}">
+          <label class="control-label">Taux amortissement</label>
+
+          <input type="number" name="tauxAmort" class="form-control" #tauxAmort="ngModel"
+                 [(ngModel)]="immobilisation.tauxFami" disabled>
+          <label *ngIf="tauxAmort.errors && (tauxAmort.dirty || tauxAmort.touched)"
+                 class="has-error">Ce champs
+            est
+            obligatoire.</label>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group {{ddamort.errors && (ddamort.dirty || ddamort.touched) ? 'has-error' :''}}">
+          <label class="control-label">Date début amortissement</label>
+
+          <input type="date" name="dateDebutAmort" class="form-control" #ddamort="ngModel"
+                 [(ngModel)]="immobilisation.dateDebutAmort" (ngModelChange)="onChangeStartDate($event)">
+          <label *ngIf="ddamort.errors && (ddamort.dirty || ddamort.touched)"
+                 class="has-error">Ce champs
+            est
+            obligatoire.</label>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group {{dfamort.errors && (dfamort.dirty || dfamort.touched) ? 'has-error' :''}}">
+          <label class="control-label">Date fin amortissement</label>
+
+          <input type="date" name="dateFinAmort" class="form-control" #dfamort="ngModel"
+                 [(ngModel)]="immobilisation.dateFinAmort" disabled>
+          <label *ngIf="dfamort.errors && (dfamort.dirty || dfamort.touched)"
+                 class="has-error">Ce champs
+            est
+            obligatoire.</label>
+        </div>
+      </div>
+
+    </div>
+
+
+    <table class="table table-bordered table-hover">
+      <thead>
+      <tr>
+        <th>Date</th>
+        <th>Valeur Brute</th>
+        <th>Dotation aux amortissement</th>
+        <th>Amortissement Cumulés</th>
+        <th>Valeur Nette</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr
+        *ngFor="let item of immobilisation.detailAmorts;let i = index">
+        <td>{{item.date}}</td>
+        <td>{{item.valeurBrute.toFixed(2)}}</td>
+        <td>{{item.dotationAuxAmort.toFixed(2)}}</td>
+        <td>{{item.amortCumule.toFixed(2)}}</td>
+        <td>{{item.valeurNette.toFixed(2)}}</td>
+      </tr>
+      </tbody>
+    </table>
+
+
+    <div class="text-right">
+      <a href="javascript:" class="btn btn-danger btn-with-icon"
+         [routerLink]="['/pages/manage-reception/reception-list']">
+        <i class="fa fa-check fa-fw"></i>Fermer
+      </a>
+      <button type="submit" class="btn btn-success btn-with-icon">
+        <i class="fa fa-check fa-fw"></i>Valider
+      </button>
+    </div>
+  </card>
+</form>
+
