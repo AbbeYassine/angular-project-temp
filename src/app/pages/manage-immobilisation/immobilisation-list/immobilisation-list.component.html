@@ -1,3 +1,67 @@
-<p>
-  immobilisation-list works!
-</p>
+<div class="row">
+    <div class="col-md-12">
+        <card cardTitle="Data Table">
+        <table class="table table-bordered table-hover">
+          <thead>
+          <tr>
+            <th>Famille</th>
+            <th>Emplacement</th>
+            <th>Fournisseur</th>
+            <th>Article</th>
+            <th>Code</th>
+            <th>Désignation</th>
+            <th>Prix d'achat</th>
+            <th>Date d'amortissement</th>
+            <th>Référence fournisseur</th>
+          </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of immobilisations;let i = index">
+            <td>{{item.codeFami.desigFami}}
+            </td>
+              <td>{{item.desigEmp}}</td>
+              <td>{{item.raisonSocial}}</td>
+              <td>{{item.referenceArt}}</td>
+              <td>{{item.codeImmo}}</td>
+              <td>{{item.desigArt}}</td>
+              <td>{{item.montantHt}}</td>
+              <td>{{item.dateDebutAmort}}</td>
+              <td>{{item.codeFr}}</td>
+              <td>
+              <a href="javascript:" [routerLink]="['/pages/manage-immobilisation/immobilisation-edit/'+item.codeImmo]" >
+                <span class="label label-info">Modifier</span>
+              </a>
+                <span class="label label-info">Transfert</span>
+            </td>
+            </tr>
+          </tbody>
+        </table>
+        <form class="pagination-wrapper">
+          <div class="form-group pages">
+            <pagination-controls class="my-pagination" id="pager" (pageChange)="pageChanged($event)" maxSize="9"
+                                 directionLinks="true"
+                                 autoHide="true" previousLabel="Prev" nextLabel="Next"
+                                 screenReaderPaginationLabel="Pagination" screenReaderPageLabel="page"
+                                 screenReaderCurrentLabel="You're on page">
+            </pagination-controls>
+          </div>
+          <div class="form-group options pages">
+            <div class="input-group input-group-sm">
+              <select class="form-control" name="pageChangedName" [(ngModel)]="pageSize" (ngModelChange)="loadData()">
+                <option>1</option>
+                <option>5</option>
+                <option>10</option>
+                <option>20</option>
+                <option>50</option>
+                <option>100</option>
+                <option>200</option>
+              </select>
+              <span class="input-group-addon addon-right">Per Page</span>
+            </div>
+          </div>
+        </form>
+      </card>
+    </div>
+  </div>
+  
+  

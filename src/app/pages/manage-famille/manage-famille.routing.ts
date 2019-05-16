@@ -11,6 +11,7 @@ const childRoutes: Routes = [
       children: [
         {path: '', redirectTo: 'famille-add', pathMatch: 'full'},
         {path: 'famille-add', component: FamilleFormComponent},
+        {path: 'famille-edit/:famille', component: FamilleFormComponent},
         {path: 'famille-list', component: FamilleListComponent}
       ]
     }

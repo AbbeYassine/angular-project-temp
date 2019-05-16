@@ -21,4 +21,14 @@ export class ArticleService {
   addArticle(article : Article){
     return this.http.post(Config.baseUrl + "/GestionImmobilisation-core/api/articles",article)
   }
+
+  getArticleById(articleId : string){
+    return this.http.get(Config.baseUrl + "/GestionImmobilisation-core/api/articles/"+articleId);
+  }
+  editArticle(articleId : string ,article : Article){
+    return this.http.put(Config.baseUrl + "/GestionImmobilisation-core/api/articles/"+articleId,article );
+  }
+  deleteArticle(articleId :string){
+    return this.http.delete(Config.baseUrl +"/GestionImmobilisation-core/api/articles/"+articleId );
+  }
 }

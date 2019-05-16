@@ -25,8 +25,12 @@
           <td>{{item.dernierPrix}}</td>
           <td>{{item.quantiteGlobale}}</td>
           <td>
+            <a href="javascript:" [routerLink]="['/pages/manage-article/article-edit/'+item.referenceArt]" >
             <span class="label label-info">Modifier</span>
+          </a>
+        <a href="javascript:" (click)="deleteById(i)">
             <span class="label label-danger">Supprimer</span>
+          </a>
           </td>
         </tr>
         </tbody>

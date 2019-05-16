@@ -7,21 +7,27 @@
           <th>Code</th>
           <th>Raison Sociale</th>
           <th>A contacter</th>
-          <th>Telephone</th>
+          <th>Téléphone</th>
           <th>Fax</th>
         </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let item of fournisseurs">
+          <tr *ngFor="let item of fournisseurs;let i = index">
+              <td *ngIf="i==0 || fournisseurs[i].codeFr.codeFr != fournisseurs[i-1].codeFr.codeFr">{{item.codeFr.codeFr}}
+          </td>
             <td>{{item.codeFr}}</td>
             <td>{{item.raisonSocial}}</td>
             <td>{{item.aContacter}}</td>
             <td>{{item.telephoneFr}}</td>
             <td>{{item.faxFr}}</td>
-           <td>
+            <td>
+            <a href="javascript:" [routerLink]="['/pages/manage-fournisseur/fournisseur-edit/'+item.codeFr]" >
               <span class="label label-info">Modifier</span>
+            </a>
+            <a href="javascript:" (click)="deleteById(i)">
               <span class="label label-danger">Supprimer</span>
-           </td>
+            </a>
+          </td>
           </tr>
         </tbody>
       </table>

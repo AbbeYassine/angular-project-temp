@@ -8,9 +8,10 @@ const childRoutes: Routes = [
     path: '',
     component: ManageSiteComponent,
     children: [
-      {path: '', redirectTo: 'site-list', pathMatch: 'full'},
-      {path: 'site-list', component: SiteListeComponent},
-      {path: 'site-add', component: SiteAjouterComponent}
+      {path: '', redirectTo: 'site-add', pathMatch: 'full'},
+      {path: 'site-add', component: SiteAjouterComponent},
+      {path: 'site-edit/:siteId', component: SiteAjouterComponent},
+      {path: 'site-list', component: SiteListeComponent}
     ]
   }
 

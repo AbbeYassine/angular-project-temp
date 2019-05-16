@@ -1,57 +1,89 @@
-<form (ngSubmit)="valider()">
+<form [ngBusy]="busy" #f="ngForm" (ngSubmit)="valider()">
 
   <card cardTitle="Ajouter un fournisseur" isCollapse="true">
 
-    <div class="form-group">
+    <div class="form-group {{codeFr.errors && (codeFr.dirty || codeFr.touched) ? 'has-error' :''}}">
       <label class="control-label">Code</label>
-      <input type="text" name="codeFr" class="form-control" placeholder="Code"
-             [(ngModel)]="fournisseur.codeFr">
+      <input type="text" name="codeFr" #codeFr="ngModel" class="form-control" placeholder="Code"
+             [(ngModel)]="fournisseur.codeFr"required>
+        <label *ngIf="codeFr.errors && (codeFr.dirty || codeFr.touched)"
+             class="has-error">Ce champs
+        est
+        obligatoire.</label>
     </div>
 
-    <div class="form-group">
+    <div class="form-group {{raisonSocial.errors && (raisonSocial.dirty || raisonSocial.touched) ? 'has-error' :''}}">
       <label class="control-label">Raison sociale</label>
-      <input type="text" name="raisonSocial" class="form-control" placeholder="Raison sociale"
-             [(ngModel)]="fournisseur.raisonSocial">
+      <input type="text" name="raisonSocial" #raisonSocial="ngModel" class="form-control" placeholder="Raison sociale"
+             [(ngModel)]="fournisseur.raisonSocial"required>
+             <label *ngIf="raisonSocial.errors && (raisonSocial.dirty || raisonSocial.touched)"
+             class="has-error">Ce champs
+        est
+        obligatoire.</label>
     </div>
-    <div class="form-group">
+    <div class="form-group {{aContacter.errors && (aContacter.dirty || aContacter.touched) ? 'has-error' :''}}">
       <label class="control-label">A contacter</label>
-      <input type="text" name="aContacter" class="form-control" placeholder="A contacter"
-             [(ngModel)]="fournisseur.aContacter">
+      <input type="text" name="aContacter" #aContacter="ngModel"class="form-control" placeholder="A contacter"
+             [(ngModel)]="fournisseur.aContacter"required>
+             <label *ngIf="aContacter.errors && (aContacter.dirty || aContacter.touched)"
+             class="has-error">Ce champs
+        est
+        obligatoire.</label>
     </div>
-    <div class="form-group">
+    <div class="form-group {{telephoneFr.errors && (telephoneFr.dirty || telephoneFr.touched) ? 'has-error' :''}}">
       <label class="control-label">Téléphone</label>
-      <input type="text" name="telephoneFr" class="form-control" placeholder="Téléphone"
-             [(ngModel)]="fournisseur.telephoneFr">
+      <input type="text" name="telephoneFr" #telephoneFr="ngModel" class="form-control" placeholder="Téléphone"
+             [(ngModel)]="fournisseur.telephoneFr"required>
+             <label *ngIf="telephoneFr.errors && (telephoneFr.dirty || telephoneFr.touched)"
+             class="has-error">Ce champs
+        est
+        obligatoire.</label>
     </div>
-    <div class="form-group">
+    <div class="form-group {{faxFr.errors && (faxFr.dirty || faxFr.touched) ? 'has-error' :''}}">
       <label class="control-label">Fax</label>
-      <input type="text" name="faxFr" class="form-control" placeholder="Fax"
-             [(ngModel)]="fournisseur.faxFr">
+      <input type="text" name="faxFr" #faxFr="ngModel" class="form-control" placeholder="Fax"
+             [(ngModel)]="fournisseur.faxFr"required>
+             <label *ngIf="faxFr.errors && (faxFr.dirty || faxFr.touched)"
+             class="has-error">Ce champs
+        est
+        obligatoire.</label>
     </div>
-    <div class="form-group">
+    <div class="form-group {{emailFr.errors && (emailFr.dirty || emailFr.touched) ? 'has-error' :''}}">
       <label class="control-label">E-mail</label>
-      <input type="text" name="emailFr" class="form-control" placeholder="E-mail"
-             [(ngModel)]="fournisseur.emailFr">
+      <input type="text" name="emailFr" #emailFr="ngModel" class="form-control" placeholder="E-mail"
+             [(ngModel)]="fournisseur.emailFr"required>
+             <label *ngIf="emailFr.errors && (emailFr.dirty || emailFr.touched)"
+             class="has-error">Ce champs
+        est
+        obligatoire.</label>
     </div>
-    <div class="form-group">
+    <div class="form-group {{siteFr.errors && (siteFr.dirty || siteFr.touched) ? 'has-error' :''}}">
       <label class="control-label">Site Web</label>
-      <input type="text" name="siteFr" class="form-control" placeholder="Site Web"
+      <input type="text" name="siteFr" #siteFr="ngModel" class="form-control" placeholder="Site Web"
              [(ngModel)]="fournisseur.siteFr">
+             <label *ngIf="siteFr.errors && (siteFr.dirty || siteFr.touched)"
+             class="has-error">Ce champs
+        est
+        obligatoire.</label>
     </div>
-    <div class="form-group">
+    <div class="form-group {{adresseFr.errors && (adresseFr.dirty || adresseFr.touched) ? 'has-error' :''}}">
       <label class="control-label">Adresse</label>
-      <input type="text" name="adresseFr" class="form-control" placeholder="Adresse"
+      <input type="text" name="adresseFr" #adresseFr="ngModel" class="form-control" placeholder="Adresse"
              [(ngModel)]="fournisseur.adresseFr">
+             <label *ngIf="adresseFr.errors && (adresseFr.dirty || adresseFr.touched)"
+             class="has-error">Ce champs
+        est
+        obligatoire.</label>
     </div>
     <div class="text-right">
-      <a href="javascript:" class="btn btn-danger btn-with-icon"
-              [routerLink]="['/pages/manage-fournisseur/fournisseur-list']">
-        <i class="fa fa-check fa-fw"></i>Fermer
-      </a>
-      <button type="button" class="btn btn-success btn-with-icon">
-        <i class="fa fa-check fa-fw"></i>Valider
-      </button>
-    </div>
+        <a href="javascript:" class="btn btn-danger btn-with-icon"
+                [routerLink]="['/pages/manage-fournisseur/fournisseur-list']">
+          <i class="fa fa-check fa-fw"></i>Fermer
+        </a>
+        <button type="button" [disabled]="f.invalid" class="btn btn-success btn-with-icon">
+          <i class="fa fa-check fa-fw"></i>Valider
+        </button>
+      </div>
   </card>
 </form>
 

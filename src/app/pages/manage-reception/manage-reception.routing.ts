@@ -7,10 +7,11 @@ import { ManageReceptionComponent } from "./manage-reception.component";
 const childRoutes: Routes = [
     {
       path: '',
-      component: ReceptionListComponent,
+      component: ManageReceptionComponent,
       children: [
         {path: '', redirectTo: 'reception-add', pathMatch: 'full'},
         {path: 'reception-add', component: ReceptionFormComponent},
+        {path: 'reception-edit/:receptionId', component: ReceptionFormComponent},
         {path: 'reception-list', component: ReceptionListComponent}
       ]
     }

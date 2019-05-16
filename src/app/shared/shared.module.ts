@@ -17,6 +17,7 @@ import {AlertComponent} from './components/alert/alert.component';
 import {WeatherComponent} from './components/weather/weather.component';
 import {ProfileComponent} from './components/profile/profile.component';
 import {HttpClientModule} from '@angular/common/http';
+import {BusyModule} from 'angular2-busy';
 
 @NgModule({
   imports: [
@@ -26,6 +27,7 @@ import {HttpClientModule} from '@angular/common/http';
     FormsModule,
     ReactiveFormsModule,
     JsonpModule,
+    BusyModule
   ],
   declarations: [
     CardComponent,
@@ -51,7 +53,8 @@ import {HttpClientModule} from '@angular/common/http';
     PellEditorComponent,
     AlertComponent,
     WeatherComponent,
-    ProfileComponent
+    ProfileComponent,
+    BusyModule
   ]
 })
 export class SharedModule {

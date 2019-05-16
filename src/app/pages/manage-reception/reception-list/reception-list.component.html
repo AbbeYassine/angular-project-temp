@@ -12,14 +12,18 @@
         </thead>
         <tbody>
 
-          <tr *ngFor="let item of receptions">
+          <tr *ngFor="let item of receptions, let i = index">
             <td>{{item.numeroBonRecep}}</td>
             <td>{{item.dateRecep}}</td>
             <td>{{item.codeFr}}</td>
             <td>{{item.raisonSocial}}</td>
            <td>
-              <span class="label label-info">Modifier</span>
-              <span class="label label-danger">Supprimer</span>
+              <a href="javascript:" [routerLink]="['/pages/manage-reception/reception-edit/'+item.numeroBonRecep]" >
+                <span class="label label-info">Modifier</span>
+              </a>
+              <a href="javascript:" (click)="deleteById(i)">
+                <span class="label label-danger">Supprimer</span>
+              </a>
            </td>
           </tr>
         </tbody>

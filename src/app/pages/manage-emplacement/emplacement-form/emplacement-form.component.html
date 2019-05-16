@@ -1,3 +1,49 @@
-<p>
-  emplacement-form works!
-</p>
+<form [ngBusy]="busy" #f="ngForm" (ngSubmit)="valider()">
+
+    <card  cardTitle="Ajouter un emplacement" isCollapse="true">
+      <div class="form-group {{codeSite.errors && (codeSite.dirty || codeSite.touched) ? 'has-error' :''}}">
+        <label class="control-label">Site</label>
+        <select name="site" id="select1" class="form-control" #codeSite="ngModel" [(ngModel)]="emplacement.codeSite"
+                required>
+          <option *ngFor="let site of sites" value="{{site.codeSite}}">{{site.desigSite}}
+          </option>
+        </select>
+  
+        <label *ngIf="codeSite.errors && (codeSite.dirty || codeSite.touched)"
+               class="has-error">Ce champs
+          est
+          obligatoire.</label>
+      </div>
+      <div class="form-group {{codeEmp.errors && (codeEmp.dirty || codeEmp.touched) ? 'has-error' :''}}">
+          <label class="control-label">Code</label>
+          <input type="text" class="form-control" name="codeEmp" #codeEmp="ngModel" placeholder="Code"
+                 [(ngModel)]="emplacement.codeEmp" required>
+    
+          <label *ngIf="codeEmp.errors && (codeEmp.dirty || codeEmp.touched)"
+                 class="has-error">Ce champs
+            est
+            obligatoire.</label>
+        </div>
+  
+      <div class="form-group {{desigEmp.errors && (desigEmp.dirty || desigEmp.touched) ? 'has-error' :''}}">
+        <label class="control-label">Désignation</label>
+        <input type="text" name="desigEmp" #desigEmp="ngModel" class="form-control" placeholder="Désignation"
+               [(ngModel)]="emplacement.desigEmp" required>
+  
+        <label *ngIf="desigEmp.errors && (desigEmp.dirty || desigEmp.touched)"
+               class="has-error">Ce champs
+          est
+          obligatoire.</label>
+      </div>
+      <div class="text-right">
+          <a href="javascript:" class="btn btn-danger btn-with-icon"
+                [routerLink]="['/pages/manage-emplacement/emplacement-liste']">
+            <i class="fa fa-check fa-fw"></i>Fermer
+          </a>
+        <button type="submit" [disabled]="f.invalid" class="btn btn-success btn-with-icon">
+          <i class="fa fa-check fa-fw"></i>Valider
+        </button>
+      </div>
+    </card>
+  </form>
+  

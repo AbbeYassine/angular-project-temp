@@ -11,6 +11,7 @@ const childRoutes: Routes = [
     children: [
       {path: '', redirectTo: 'fournisseur-list', pathMatch: 'full'},
       {path: 'fournisseur-list', component: FournisseurListComponent},
+      {path: 'fournisseur-edit/:fournisseurId', component: FournisseurFormComponent},
       {path: 'fournisseur-add', component: FournisseurFormComponent}
     ]
   }

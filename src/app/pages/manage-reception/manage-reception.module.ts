@@ -18,6 +18,6 @@ import { routing } from './manage-reception.routing';
     ModalModule,
     routing
   ],
-  declarations: [ReceptionListComponent, ReceptionFormComponent]
+  declarations: [ManageReceptionComponent,ReceptionListComponent, ReceptionFormComponent]
 })
 export class ManageReceptionModule { }

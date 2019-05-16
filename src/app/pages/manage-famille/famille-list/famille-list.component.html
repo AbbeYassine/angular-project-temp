@@ -10,13 +10,17 @@
         </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let item of familles">
+            <tr *ngFor="let item of familles;let i = index">
             <td>{{item.codeFami}}</td>
             <td>{{item.desigFami}}</td>
             <td>{{item.tauxFami}}</td>
            <td>
-              <span class="label label-info">Modifier</span>
-              <span class="label label-danger">Supprimer</span>
+              <a href="javascript:" [routerLink]="['/pages/manage-famille/famille-edit/'+item.codeFami]" >
+                <span class="label label-info">Modifier</span>
+              </a>
+              <a href="javascript:" (click)="deleteById(i)">
+                  <span class="label label-danger">Supprimer</span>
+                </a>
            </td>
           </tr>
         </tbody>

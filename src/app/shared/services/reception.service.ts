@@ -21,4 +21,13 @@ export class ReceptionService {
   addReception(reception : BonDeReception){
     return this.http.post(Config.baseUrl + "/GestionImmobilisation-core/api/bondereceptions",reception)
   }
+  getReceptionById(receptionId : string){
+    return this.http.get(Config.baseUrl + "/GestionImmobilisation-core/api/bondereceptions"+receptionId );
+  }
+  editReception(receptionId  : string ,reception :BonDeReception){
+    return this.http.put(Config.baseUrl + "/GestionImmobilisation-core/api/bondereceptions"+receptionId ,reception);
+  }
+  deleteReception(receptionId  :string){
+    return this.http.delete(Config.baseUrl +"/GestionImmobilisation-core/api/bondereceptions"+receptionId );
+  }
 }

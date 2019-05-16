@@ -7,10 +7,11 @@ import { ManageCessionComponent } from './manage-cession.component';
 const childRoutes: Routes = [
     {
       path: '',
-      component: CessionListComponent,
+      component: ManageCessionComponent,
       children: [
         {path: '', redirectTo: 'cession-add', pathMatch: 'full'},
         {path: 'cession-add', component: CessionFormComponent},
+        {path: 'cession-edit/:cessionId', component: CessionFormComponent},
         {path: 'cession-list', component: CessionListComponent}
       ]
     }

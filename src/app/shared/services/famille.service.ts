@@ -20,4 +20,13 @@ export class FamilleServices {
   addFamille(famille : FamilleImmobilisation){
     return this.http.post(Config.baseUrl + "/GestionImmobilisation-core/api/familleimmobilisations",famille)
   }
+  getFamilleById(familleId : number){
+    return this.http.get(Config.baseUrl + "/GestionImmobilisation-core/api/familleimmobilisations/"+familleId);
+  }
+  editFamille(familleId : number,famille : FamilleImmobilisation){
+    return this.http.put(Config.baseUrl + "/GestionImmobilisation-core/api/familleimmobilisations/"+familleId,famille );
+  }
+  deleteFamille(familleId :number){
+    return this.http.delete(Config.baseUrl +"/GestionImmobilisation-core/api/familleimmobilisations/"+familleId );
+  }
 }

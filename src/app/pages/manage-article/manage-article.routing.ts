@@ -10,6 +10,7 @@ const childRoutes: Routes = [
     children: [
       {path: '', redirectTo: 'article-add', pathMatch: 'full'},
       {path: 'article-add', component: ArticleFormComponent},
+      {path: 'article-edit/:articleId', component: ArticleFormComponent},
       {path: 'article-list', component: ArticleListComponent}
     ]
   }

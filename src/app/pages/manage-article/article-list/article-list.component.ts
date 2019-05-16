@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Article} from '../../../shared/models/article';
 import {ArticleService} from '../../../shared/services/article.service';
+import { Subscription } from 'rxjs';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-article-list',
@@ -16,12 +18,14 @@ export class ArticleListComponent implements OnInit {
   pageSize = 10;
   pageNumber = 1;
 
+  busy : Subscription;
+
   constructor(private articleServices
                 : ArticleService) {
   }
 
   ngOnInit() {
-    this.articleServices.getAllArticle()
+    this.busy = this.articleServices.getAllArticle()
       .subscribe(
         (data: Article[]) => {
           this.articles = data;
@@ -39,6 +43,42 @@ export class ArticleListComponent implements OnInit {
       );
   }
 
+
+  deleteById(index:number){
+
+    Swal({
+      title: 'Are you sure?',
+      text:  "Suppression d'un article",
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, keep it'
+    }).then((result) => {
+      if (result.value) {
+
+        this.articleServices.deleteArticle(this.articles[index].referenceArt)
+          .subscribe(
+            (data)=>{
+              Swal(
+                'Deleted!',
+                'Your imaginary file has been deleted.',
+                'success'
+              )
+              this.articles.splice(index,1);
+            }
+          )
+        
+      // For more information about handling dismissals please visit
+      // https://sweetalert2.github.io/#handling-dismissals
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal(
+          'Cancelled',
+          'Your imaginary file is safe :)',
+          'error'
+        )
+      }
+    })
+  }
 
   getArticleNumberPerCodeFami(codeFamille) {
     let sum = 0;
