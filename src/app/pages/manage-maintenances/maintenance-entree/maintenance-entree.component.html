@@ -1,0 +1,61 @@
+<form [ngBusy]="busy" #f="ngForm" (ngSubmit)="valider()">
+
+  <card cardTitle="Ajouter un entree" isCollapse="true">
+      <div class="form-group {{dateEntree.errors && (dateEntree.dirty || dateEntree.touched) ? 'has-error' :''}}">
+          <label class="control-label">Date d'entree</label>
+
+          <input type="date" name="dateEntree" class="form-control" #dateEntree="ngModel"
+                 [(ngModel)]="entree.dateEntree" >
+          <label *ngIf="dateEntree.errors && (dateEntree.dirty || dateEntree.touched)"
+                 class="has-error">Ce champs
+            est
+            obligatoire.</label>
+        </div>
+      <div class="form-group {{codeAr.errors && (codeAr.dirty || codeAr.touched) ? 'has-error' :''}}">
+      <label class="control-label">Immobilisation</label>
+      <select name="codeAr" id="select1" class="form-control" #codeAr="ngModel"
+              [(ngModel)]="entree.codeImmo" 
+              required>
+        <option *ngFor="let immobilisation of immobilisations" value="{{immobilisation.codeImmo}}">{{immobilisation.codeImmo}}
+        </option>
+      </select>
+      <label *ngIf="codeAr.errors && (codeAr.dirty || codeAr.touched)"
+             class="has-error">Ce champs
+        est
+        obligatoire.</label>
+    </div>
+    <div class="form-group {{codeEtat.errors && (codeEtat.dirty || codeEtat.touched) ? 'has-error' :''}}">
+      <label class="control-label">Etat d'immo</label>
+      <select name="codeEtat" id="select1" class="form-control" #codeEtat="ngModel"
+              [(ngModel)]="entree.codeEtat"
+              required>
+        <option *ngFor="let etatimmo of etatimmos" value="{{etatimmo.codeEtat}}">
+          {{etatimmo.codeEtat}}
+        </option>
+      </select>
+      <label *ngIf="codeEtat.errors && (codeEtat.dirty || codeEtat.touched)"
+             class="has-error">Ce champs
+        est
+        obligatoire.</label>
+    </div>
+      <div class="form-group {{observEntree.errors && (observEntree.dirty || observEntree.touched) ? 'has-error' :''}}">
+          <label class="control-label">Observation</label>
+          <input type="text" name="observEntree" class="form-control" #observEntree="ngModel" placeholder="Observation"
+                 [(ngModel)]="entree.observEntree">
+          <label *ngIf="observEntree.errors && (observEntree.dirty || obseobservEntreervSortie.touched)"
+                 class="has-error">Ce champs
+            est
+            obligatoire.
+          </label>
+        </div>
+    <div class="text-right">
+      <a href="javascript:" class="btn btn-danger btn-with-icon"
+         [routerLink]="['/pages/manage-maintenances/maintenances-list']">
+        <i class="fa fa-check fa-fw"></i>Annuler
+      </a>
+      <button type="submit" class="btn btn-success btn-with-icon">
+        <i class="fa fa-check fa-fw"></i>Valider
+      </button>
+    </div>
+  </card>
+</form>

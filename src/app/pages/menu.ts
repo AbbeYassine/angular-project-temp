@@ -1,7 +1,7 @@
 export let MENU_ITEM = [
   {
     path: 'manage-emplacement',
-    title: 'Gestion des emplacements',
+    title: 'Gestion emplacements',
     icon: 'dashboard',
     children: [
       {
@@ -16,7 +16,7 @@ export let MENU_ITEM = [
   },
   {
     path: 'manage-famille',
-    title: 'Gestion des familles',
+    title: 'Gestion familles',
     icon: 'dashboard',
     children: [
       {
@@ -31,7 +31,7 @@ export let MENU_ITEM = [
   },
   {
     path: 'manage-article',
-    title: 'Gestion des articles',
+    title: 'Gestion articles',
     icon: 'dashboard',
     children: [
       {
@@ -46,7 +46,7 @@ export let MENU_ITEM = [
   },
   {
     path: 'manage-site',
-    title: 'Gestion des sites',
+    title: 'Gestion sites',
     icon: 'dashboard',
     children: [
       {
@@ -61,7 +61,7 @@ export let MENU_ITEM = [
   },
   {
     path: 'manage-fournisseur',
-    title: 'Gestion des fournisseurs',
+    title: 'Gestion fournisseurs',
     icon: 'dashboard',
     children: [
       {
@@ -76,12 +76,12 @@ export let MENU_ITEM = [
   },
 {
     path: 'manage-reception',
-    title: 'Gestion des bons de réception',
+    title: 'Bons de réception',
     icon: 'dashboard',
     children: [
       {
         path: 'reception-list',
-        title: 'List des bons de réception'
+        title: 'List des bons de réceptions'
       },
       {
         path: 'reception-add',
@@ -91,7 +91,7 @@ export let MENU_ITEM = [
   },
   {
     path: 'manage-immobilisation',
-    title: 'Gestion des immobilisations',
+    title: 'Gestion Immobilisations',
     icon: 'dashboard',
     children: [
       {
@@ -105,19 +105,42 @@ export let MENU_ITEM = [
     ]
   },
   {
-    path: 'manage-maintenances',
-    title: 'Gestion des opérations de maintenances',
+    path: 'managee-transfert',
+    title: 'Transfert immobilisation',
     icon: 'dashboard',
     children: [
       {
-        path: 'maintenance-list',
+        path: 'transfert-list',
+        title: 'List des Transfert des immobilisations'
+      },
+      {
+        path: 'transfert-add',
+        title: 'Ajouter un Transfert'
+      }
+    ]
+  },
+  {
+    path: 'manage-maintenances',
+    title: 'Gestion maintenances',
+    icon: 'dashboard',
+    children: [
+      {
+        path: 'maintenances-list',
         title: 'List des opérations de maintenances'
+      },
+      {
+        path: 'maintenances-sortie',
+        title: 'Ajouter un sortie'
+      },
+      {
+        path: 'maintenances-entree',
+        title: 'Ajouter un entree'
       }
     ]
   },
   {
     path: 'manage-cession',
-    title: 'Gestion des immobilisations en cession',
+    title: 'Gestion cessions',
     icon: 'dashboard',
     children: [
       {

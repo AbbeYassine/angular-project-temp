@@ -9,3 +9,4 @@ export class Transfert{
     nouvelle: Emplacement;
     codeImmo: Immobilisation;
   }
+  
