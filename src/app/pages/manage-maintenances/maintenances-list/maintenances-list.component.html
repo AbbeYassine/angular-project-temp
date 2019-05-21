@@ -1,0 +1,59 @@
+<div class="row">
+  <div class="col-md-12">
+    <card cardTitle="Data Table">
+      <table class="table table-bordered table-hover">
+        <thead>
+        <tr>
+          <th>Code</th>
+          <th>Immobilisation</th>
+          <th>Date de Sortie</th>
+          <th>Date Entrée</th>
+          <th>Destination</th>
+          <th>Etat</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let item of sorties;let i = index">
+          <td>{{item.idSortie}}</td>
+          <td>{{item.immobilisation.article.desigArt}}</td>
+          <td>{{item.dateSortie}}</td>
+          <td>{{item.entree? item.entree.dateEntree : '-'}}</td>
+          <td>{{item.fournisseur.raisonSocial}}</td>
+          <td>{{item.motifSortie}}</td>
+          <td>
+            <a href="javascript:" *ngIf="!item.entree"
+               [routerLink]="['/pages/manage-maintenances/maintenances-entree/'+item.idSortie]">
+              <span class="label label-info">+Entrée</span>
+            </a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      <form class="pagination-wrapper">
+        <div class="form-group pages">
+          <pagination-controls class="my-pagination" id="pager" (pageChange)="pageChanged($event)" maxSize="9"
+                               directionLinks="true"
+                               autoHide="true" previousLabel="Prev" nextLabel="Next"
+                               screenReaderPaginationLabel="Pagination" screenReaderPageLabel="page"
+                               screenReaderCurrentLabel="You're on page">
+          </pagination-controls>
+        </div>
+        <div class="form-group options pages">
+          <div class="input-group input-group-sm">
+            <select class="form-control" name="pageChangedName" [(ngModel)]="pageSize" (ngModelChange)="loadData()">
+              <option>1</option>
+              <option>5</option>
+              <option>10</option>
+              <option>20</option>
+              <option>50</option>
+              <option>100</option>
+              <option>200</option>
+            </select>
+            <span class="input-group-addon addon-right">Per Page</span>
+          </div>
+        </div>
+      </form>
+    </card>
+  </div>
+</div>
+

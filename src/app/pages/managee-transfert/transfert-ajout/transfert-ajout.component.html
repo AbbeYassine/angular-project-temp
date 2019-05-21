@@ -1,32 +1,34 @@
 <form [ngBusy]="busy" #f="ngForm" (ngSubmit)="valider()">
 
   <card cardTitle="Ajouter d'un Transfert" isCollapse="true">
-      <div class="form-group {{ddamort.errors && (ddamort.dirty || ddamort.touched) ? 'has-error' :''}}">
-          <label class="control-label">Date</label>
+    <div class="form-group {{ddamort.errors && (ddamort.dirty || ddamort.touched) ? 'has-error' :''}}">
+      <label class="control-label">Date</label>
 
-          <input type="date" name="dateDebutAmort" class="form-control" #ddamort="ngModel"
-                 [(ngModel)]="transfert.dateTransfert" >
-          <label *ngIf="ddamort.errors && (ddamort.dirty || ddamort.touched)"
-                 class="has-error">Ce champs
-            est
-            obligatoire.</label>
-        </div>
-      <div class="form-group {{famArt.errors && (famArt.dirty || famArt.touched) ? 'has-error' :''}}">
-          <label class="control-label">Objet</label>
-          <input type="text" name="Objet" class="form-control" #famArt="ngModel" placeholder="Objet"
-                 [(ngModel)]="transfert.objetTransfert">
-          <label *ngIf="famArt.errors && (famArt.dirty || famArt.touched)"
-                 class="has-error">Ce champs
-            est
-            obligatoire.
-          </label>
-        </div>
+      <input type="date" name="dateDebutAmort" class="form-control" #ddamort="ngModel"
+             [(ngModel)]="transfert.dateTransfert">
+      <label *ngIf="ddamort.errors && (ddamort.dirty || ddamort.touched)"
+             class="has-error">Ce champs
+        est
+        obligatoire.</label>
+    </div>
+    <div class="form-group {{famArt.errors && (famArt.dirty || famArt.touched) ? 'has-error' :''}}">
+      <label class="control-label">Objet</label>
+      <input type="text" name="Objet" class="form-control" #famArt="ngModel" placeholder="Objet"
+             [(ngModel)]="transfert.objetTransfert">
+      <label *ngIf="famArt.errors && (famArt.dirty || famArt.touched)"
+             class="has-error">Ce champs
+        est
+        obligatoire.
+      </label>
+    </div>
     <div class="form-group {{codeArt.errors && (codeArt.dirty || codeArt.touched) ? 'has-error' :''}}">
       <label class="control-label">Immobilisation</label>
-      <select name="codeArt" id="select1" class="form-control" #codeArt="ngModel"
-              [(ngModel)]="transfert.codeImmo" 
+      <select name="codeArt" id="select1" (ngModelChange)="onChangeImmob($event)" class="form-control"
+              #codeArt="ngModel"
+              [(ngModel)]="transfert.codeImmo"
               required>
-        <option *ngFor="let immobilisation of immobilisations" value="{{immobilisation.codeImmo}}">{{immobilisation.codeImmo}}
+        <option *ngFor="let immobilisation of immobilisations" value="{{immobilisation.codeImmo}}">
+          {{immobilisation.codeImmo}}
         </option>
       </select>
       <label *ngIf="codeArt.errors && (codeArt.dirty || codeArt.touched)"
@@ -34,31 +36,44 @@
         est
         obligatoire.</label>
     </div>
+    <div class="form-group {{aemp.errors && (aemp.dirty || aemp.touched) ? 'has-error' :''}}">
+      <label class="control-label">Emplacement</label>
+      <input type="text" name="aemp" class="form-control" #aemp="ngModel"
+             [(ngModel)]="transfert.ancienEmpCode" disabled>
+      <label *ngIf="aemp.errors && (aemp.dirty || aemp.touched)"
+             class="has-error">Ce champs
+        est
+        obligatoire.</label>
+    </div>
+
+
     <div class="form-group {{emp.errors && (emp.dirty || emp.touched) ? 'has-error' :''}}">
-        <label class="control-label">Nouvel Emplacement</label>
-        <select name="emp" class="form-control" #emp="ngModel"
-                [(ngModel)]="transfert.nouvelle"
-                required>
-          <option *ngFor="let emplacement of emplacements" value="{{emplacement.codeEmp}}">
-            {{emplacement.codeEmp}}
-          </option>
-        </select>
-  
-        <label *ngIf="emp.errors && (emp.dirty || emp.touched)"
-               class="has-error">Ce champs
-          est
-          obligatoire.</label>
-      </div>
-      <div class="form-group {{observTransfert.errors && (observTransfert.dirty || observTransfert.touched) ? 'has-error' :''}}">
-          <label class="control-label">Observation</label>
-          <input type="text" name="observTransfert" class="form-control" #observTransfert="ngModel" placeholder="Observation"
-                 [(ngModel)]="transfert.observTransfert">
-          <label *ngIf="observTransfert.errors && (observTransfert.dirty || observTransfert.touched)"
-                 class="has-error">Ce champs
-            est
-            obligatoire.
-          </label>
-        </div>
+      <label class="control-label">Nouvel Emplacement</label>
+      <select name="emp" class="form-control" #emp="ngModel"
+              [(ngModel)]="transfert.nvEmpCode"
+              required>
+        <option *ngFor="let emplacement of emplacements" value="{{emplacement.codeEmp}}">
+          {{emplacement.codeEmp}}
+        </option>
+      </select>
+
+      <label *ngIf="emp.errors && (emp.dirty || emp.touched)"
+             class="has-error">Ce champs
+        est
+        obligatoire.</label>
+    </div>
+    <div
+      class="form-group {{observTransfert.errors && (observTransfert.dirty || observTransfert.touched) ? 'has-error' :''}}">
+      <label class="control-label">Observation</label>
+      <input type="text" name="observTransfert" class="form-control" #observTransfert="ngModel"
+             placeholder="Observation"
+             [(ngModel)]="transfert.observTransfert">
+      <label *ngIf="observTransfert.errors && (observTransfert.dirty || observTransfert.touched)"
+             class="has-error">Ce champs
+        est
+        obligatoire.
+      </label>
+    </div>
     <div class="text-right">
       <a href="javascript:" class="btn btn-danger btn-with-icon"
          [routerLink]="['/pages/managee-transfert/transfert-list']">

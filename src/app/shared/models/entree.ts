@@ -1,8 +1,9 @@
-import { EtatImmo } from "./etatimmo";
+import {Sortie} from './sortie';
 
 
-export class Entree{
-    dateEntree: Date;
-    observEntree: string;
-    codeEtat: EtatImmo;
-  }
+export class Entree {
+  dateEntree: string;
+  observEntree: string;
+  // codeEtat: EtatImmo;
+  sortie: Sortie;
+}

@@ -1,29 +1,85 @@
 <form [ngBusy]="busy" #f="ngForm" (ngSubmit)="valider()">
 
   <card cardTitle="Ajouter un entree" isCollapse="true">
-      <div class="form-group {{dateEntree.errors && (dateEntree.dirty || dateEntree.touched) ? 'has-error' :''}}">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group {{dateEntree.errors && (dateEntree.dirty || dateEntree.touched) ? 'has-error' :''}}">
           <label class="control-label">Date d'entree</label>
 
           <input type="date" name="dateEntree" class="form-control" #dateEntree="ngModel"
-                 [(ngModel)]="entree.dateEntree" >
+                 [(ngModel)]="entree.dateEntree">
           <label *ngIf="dateEntree.errors && (dateEntree.dirty || dateEntree.touched)"
                  class="has-error">Ce champs
             est
             obligatoire.</label>
         </div>
-      <div class="form-group {{codeAr.errors && (codeAr.dirty || codeAr.touched) ? 'has-error' :''}}">
-      <label class="control-label">Immobilisation</label>
-      <select name="codeAr" id="select1" class="form-control" #codeAr="ngModel"
-              [(ngModel)]="entree.codeImmo" 
-              required>
-        <option *ngFor="let immobilisation of immobilisations" value="{{immobilisation.codeImmo}}">{{immobilisation.codeImmo}}
-        </option>
-      </select>
-      <label *ngIf="codeAr.errors && (codeAr.dirty || codeAr.touched)"
-             class="has-error">Ce champs
-        est
-        obligatoire.</label>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group {{userSaisie.errors && (userSaisie.dirty || userSaisie.touched) ? 'has-error' :''}}">
+          <label class="control-label">Saisie par</label>
+
+          <input type="text" name="userSaisie" class="form-control" #userSaisie="ngModel"
+                 [(ngModel)]="entree.sortie.user.login" disabled>
+          <label *ngIf="dateEntree.errors && (dateEntree.dirty || dateEntree.touched)"
+                 class="has-error">Ce champs
+            est
+            obligatoire.</label>
+        </div>
+      </div>
     </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group {{immob.errors && (immob.dirty || immob.touched) ? 'has-error' :''}}">
+          <label class="control-label">Immobilisation</label>
+          <input type="text" name="immob" class="form-control" #immob="ngModel"
+                 [(ngModel)]="entree.sortie.immobilisation.codeImmo" disabled>
+          <label *ngIf="immob.errors && (immob.dirty || immob.touched)"
+                 class="has-error">Ce champs
+            est
+            obligatoire.</label>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group {{desigArt.errors && (desigArt.dirty || desigArt.touched) ? 'has-error' :''}}">
+          <label class="control-label">Désignation</label>
+          <input type="text" name="desigArt" class="form-control" #desigArt="ngModel"
+                 [(ngModel)]="entree.sortie.immobilisation.article.desigArt" disabled>
+          <label *ngIf="desigArt.errors && (desigArt.dirty || desigArt.touched)"
+                 class="has-error">Ce champs
+            est
+            obligatoire.</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group {{dateSort.errors && (dateSort.dirty || dateSort.touched) ? 'has-error' :''}}">
+          <label class="control-label">Date de sortie</label>
+          <input type="text" name="dateSort" class="form-control" #dateSort="ngModel"
+                 [(ngModel)]="entree.sortie.dateSortie" disabled>
+          <label *ngIf="dateSort.errors && (dateSort.dirty || dateSort.touched)"
+                 class="has-error">Ce champs
+            est
+            obligatoire.</label>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group {{destination.errors && (destination.dirty || destination.touched) ? 'has-error' :''}}">
+          <label class="control-label">Destination</label>
+          <input type="text" name="destination" class="form-control" #destination="ngModel"
+                 [(ngModel)]="entree.sortie.fournisseur.raisonSocial" disabled>
+          <label *ngIf="destination.errors && (destination.dirty || destination.touched)"
+                 class="has-error">Ce champs
+            est
+            obligatoire.</label>
+        </div>
+      </div>
+    </div>
+
+
+    <!--
     <div class="form-group {{codeEtat.errors && (codeEtat.dirty || codeEtat.touched) ? 'has-error' :''}}">
       <label class="control-label">Etat d'immo</label>
       <select name="codeEtat" id="select1" class="form-control" #codeEtat="ngModel"
@@ -37,17 +93,17 @@
              class="has-error">Ce champs
         est
         obligatoire.</label>
+    </div>-->
+    <div class="form-group {{observEntree.errors && (observEntree.dirty || observEntree.touched) ? 'has-error' :''}}">
+      <label class="control-label">Observation</label>
+      <input type="text" name="observEntree" class="form-control" #observEntree="ngModel" placeholder="Observation"
+             [(ngModel)]="entree.observEntree">
+      <label *ngIf="observEntree.errors && (observEntree.dirty || observEntree.touched)"
+             class="has-error">Ce champs
+        est
+        obligatoire.
+      </label>
     </div>
-      <div class="form-group {{observEntree.errors && (observEntree.dirty || observEntree.touched) ? 'has-error' :''}}">
-          <label class="control-label">Observation</label>
-          <input type="text" name="observEntree" class="form-control" #observEntree="ngModel" placeholder="Observation"
-                 [(ngModel)]="entree.observEntree">
-          <label *ngIf="observEntree.errors && (observEntree.dirty || obseobservEntreervSortie.touched)"
-                 class="has-error">Ce champs
-            est
-            obligatoire.
-          </label>
-        </div>
     <div class="text-right">
       <a href="javascript:" class="btn btn-danger btn-with-icon"
          [routerLink]="['/pages/manage-maintenances/maintenances-list']">
