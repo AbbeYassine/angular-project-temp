@@ -1,5 +1,5 @@
 export class DetailAmort {
-  idLigneAmort: number;
+  //idLigneAmort: number;
   date: string;
   valeurBrute: number;
   dotationAuxAmort: number;

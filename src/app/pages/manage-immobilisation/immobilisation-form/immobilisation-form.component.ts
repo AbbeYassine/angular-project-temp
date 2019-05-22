@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {ImmobilisationDTO} from '../../../shared/models/Immobilisation';
 import {Article} from '../../../shared/models/article';
 import {ArticleService} from '../../../shared/services/article.service';
 import {Fournisseur} from '../../../shared/models/fournisseur';
@@ -10,6 +9,7 @@ import {Emplacement} from '../../../shared/models/emplacement';
 import {EmplacementService} from '../../../shared/services/emplacement.service';
 import {Utils} from '../../../shared/utils';
 import {DetailAmort} from '../../../shared/models/detailamort';
+import {ImmobilisationDTO} from '../../../shared/models/immobilisation-dto';
 
 @Component({
   selector: 'app-immobilisation-form',
@@ -161,6 +161,7 @@ export class ImmobilisationFormComponent implements OnInit {
 
   valider() {
     console.log(this.immobilisation);
+    console.log(JSON.stringify(this.immobilisation));
 
 
   }

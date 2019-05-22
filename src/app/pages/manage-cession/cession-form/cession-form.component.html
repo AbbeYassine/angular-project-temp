@@ -1,20 +1,116 @@
 <form [ngBusy]="busy" #f="ngForm" (ngSubmit)="valider()">
 
   <card cardTitle="Ajouter d'une cession" isCollapse="true">
-    <div class="form-group {{codeArt.errors && (codeArt.dirty || codeArt.touched) ? 'has-error' :''}}">
-      <label class="control-label">Immobilisation</label>
-      <select name="codeArt" id="select1" class="form-control" #codeArt="ngModel"
-              [(ngModel)]="cession.codeImmo" 
-              required>
-        <option *ngFor="let immobilisation of immobilisations" value="{{immobilisation.codeImmo}}">{{immobilisation.codeImmo}}
-        </option>
-      </select>
-      <label *ngIf="codeArt.errors && (codeArt.dirty || codeArt.touched)"
-             class="has-error">Ce champs
-        est
-        obligatoire.</label>
+    <div class="row">
+
+      <div class="col-md-6">
+        <div class="form-group {{codeArt.errors && (codeArt.dirty || codeArt.touched) ? 'has-error' :''}}">
+          <label class="control-label">Immobilisation</label>
+          <select name="codeArt" id="select1" class="form-control" #codeArt="ngModel"
+                  [(ngModel)]="cession.codeImmo" (ngModelChange)="onChangeImmob($event)"
+                  required>
+            <option *ngFor="let immobilisation of immobilisations" value="{{immobilisation.codeImmo}}">
+              {{immobilisation.codeImmo}}
+            </option>
+          </select>
+          <label *ngIf="codeArt.errors && (codeArt.dirty || codeArt.touched)"
+                 class="has-error">Ce champs
+            est
+            obligatoire.</label>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div
+          class="form-group {{desigArt.errors && (desigArt.dirty || desigArt.touched) ? 'has-error' :''}}">
+          <label class="control-label">Désignation</label>
+          <input type="text" name="desigArt" class="form-control" #desigArt="ngModel"
+                 [(ngModel)]="selectedImmob.article.desigArt" disabled>
+          <label *ngIf="desigArt.errors && (desigArt.dirty || desigArt.touched)"
+                 class="has-error">Ce champs
+            est
+            obligatoire.
+          </label>
+        </div>
+      </div>
     </div>
-    <div class="form-group {{valeurCession.errors && (valeurCession.dirty || valeurCession.touched) ? 'has-error' :''}}">
+
+    <div class="row">
+      <div class="col-md-4">
+        <div
+          class="form-group {{valeurAchat.errors && (valeurAchat.dirty || valeurAchat.touched) ? 'has-error' :''}}">
+          <label class="control-label">Valeur achat</label>
+          <input type="text" name="valeurAchat" class="form-control" #valeurAchat="ngModel" placeholder="Valeur achat"
+                 [(ngModel)]="selectedImmob.article.dernierPrix" disabled>
+          <label *ngIf="valeurAchat.errors && (valeurAchat.dirty || valeurAchat.touched)"
+                 class="has-error">Ce champs
+            est
+            obligatoire.
+          </label>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div
+          class="form-group {{dateAchat.errors && (dateAchat.dirty || dateAchat.touched) ? 'has-error' :''}}">
+          <label class="control-label">Date achat</label>
+          <input type="text" name="dateAchat" class="form-control" #dateAchat="ngModel" placeholder="Valeur achat"
+                 [(ngModel)]="selectedImmob.bonLivraison.dateFact" disabled>
+          <label *ngIf="dateAchat.errors && (dateAchat.dirty || dateAchat.touched)"
+                 class="has-error">Ce champs
+            est
+            obligatoire.
+          </label>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div
+          class="form-group {{dateDebutAmort.errors && (dateDebutAmort.dirty || dateDebutAmort.touched) ? 'has-error' :''}}">
+          <label class="control-label">Date début amortissement</label>
+          <input type="text" name="dateDebutAmort" class="form-control" #dateDebutAmort="ngModel"
+                 placeholder="Date début amort"
+                 [(ngModel)]="selectedImmob.dateDebutAmort" disabled>
+          <label *ngIf="dateDebutAmort.errors && (dateDebutAmort.dirty || dateDebutAmort.touched)"
+                 class="has-error">Ce champs
+            est
+            obligatoire.
+          </label>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-md-4">
+        <div
+          class="form-group {{valeurCompNett.errors && (valeurCompNett.dirty || valeurCompNett.touched) ? 'has-error' :''}}">
+          <label class="control-label">Valeur comptable nette</label>
+          <input type="text" name="valeurCompNett" class="form-control" #valeurCompNett="ngModel"
+                 placeholder="Valeur comptable nette"
+                 [ngModel]="calculatedValueNette.toFixed(2)" disabled>
+          <label *ngIf="valeurCompNett.errors && (valeurCompNett.dirty || valeurCompNett.touched)"
+                 class="has-error">Ce champs
+            est
+            obligatoire.
+          </label>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div
+          class="form-group {{tauxAmort.errors && (tauxAmort.dirty || tauxAmort.touched) ? 'has-error' :''}}">
+          <label class="control-label">Taux d'amortissement achat</label>
+          <input type="text" name="tauxAmort" class="form-control" #tauxAmort="ngModel" placeholder="Valeur achat"
+                 [(ngModel)]="selectedImmob.famille.tauxFami" disabled>
+          <label *ngIf="tauxAmort.errors && (tauxAmort.dirty || tauxAmort.touched)"
+                 class="has-error">Ce champs
+            est
+            obligatoire.
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="form-group {{valeurCession.errors && (valeurCession.dirty || valeurCession.touched) ? 'has-error' :''}}">
       <label class="control-label">Valeur cession</label>
       <input type="text" name="valeurCession" class="form-control" #valeurCession="ngModel" placeholder="Valeur cession"
              [(ngModel)]="cession.valeurCession">
@@ -24,26 +120,51 @@
         obligatoire.
       </label>
     </div>
-      <div class="form-group {{dateCession.errors && (dateCession.dirty || dateCession.touched) ? 'has-error' :''}}">
-        <label class="control-label">Date</label>
+    <div class="form-group {{dateCession.errors && (dateCession.dirty || dateCession.touched) ? 'has-error' :''}}">
+      <label class="control-label">Date cession</label>
 
-        <input type="date" name="dateCession" class="form-control" #dateCession="ngModel"
-               [(ngModel)]="cession.dateCession" >
-        <label *ngIf="dateCession.errors && (dateCession.dirty || dateCession.touched)"
-               class="has-error">Ce champs
-          est
-          obligatoire.</label>
-      </div>
-      <div class="form-group {{observCession.errors && (observCession.dirty || observCession.touched) ? 'has-error' :''}}">
-          <label class="control-label">Observation</label>
-          <input type="text" name="observCession" class="form-control" #observTransfert="ngModel" placeholder="Observation"
-                 [(ngModel)]="cession.observCession">
-          <label *ngIf="observCession.errors && (observCession.dirty || observCession.touched)"
-                 class="has-error">Ce champs
-            est
-            obligatoire.
-          </label>
-        </div>
+      <input type="date" name="dateCession" class="form-control" #dateCession="ngModel"
+             [(ngModel)]="cession.dateCession" (ngModelChange)="onChangeDateCession($event)">
+      <label *ngIf="dateCession.errors && (dateCession.dirty || dateCession.touched)"
+             class="has-error">Ce champs
+        est
+        obligatoire.</label>
+    </div>
+    <div
+      class="form-group {{observCession.errors && (observCession.dirty || observCession.touched) ? 'has-error' :''}}">
+      <label class="control-label">Observation</label>
+      <input type="text" name="observCession" class="form-control" #observCession="ngModel" placeholder="Observation"
+             [(ngModel)]="cession.observCession">
+      <label *ngIf="observCession.errors && (observCession.dirty || observCession.touched)"
+             class="has-error">Ce champs
+        est
+        obligatoire.
+      </label>
+    </div>
+
+    <table class="table table-bordered table-hover">
+      <thead>
+      <tr>
+        <th>Date</th>
+        <th>Valeur Brute</th>
+        <th>Dotation aux amortissement</th>
+        <th>Amortissement Cumulés</th>
+        <th>Valeur Nette</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr
+        *ngFor="let item of detailAmortsTmp;let i = index">
+        <td>{{item.date}}</td>
+        <td>{{item.valeurBrute.toFixed(2)}}</td>
+        <td>{{item.dotationAuxAmort.toFixed(2)}}</td>
+        <td>{{item.amortCumule.toFixed(2)}}</td>
+        <td>{{item.valeurNette.toFixed(2)}}</td>
+      </tr>
+      </tbody>
+    </table>
+
+
     <div class="text-right">
       <a href="javascript:" class="btn btn-danger btn-with-icon"
          [routerLink]="['/pages/manage-cession/cession-list']">

@@ -10,28 +10,14 @@ export class Immobilisation {
   codeImmo: string;
   libSaisie: string;
 
-  article: Article;
-  famille: FamilleImmobilisation;
+  article: Article = new Article();
+  famille: FamilleImmobilisation = new FamilleImmobilisation();
   fournisseur: Fournisseur;
-  bonLivraison: BonLivraisonFr;
+  bonLivraison: BonLivraisonFr = new BonLivraisonFr();
   emplacement: Emplacement;
   dateDebutAmort: string;
   dateFinAmort: string;
 
   sorties?: Sortie[] = [];
-  detailAmorts: DetailAmort[] = [];
-}
-
-export class ImmobilisationDTO {
-  refArt: string;
-  codeFam: number;
-  priceArt: number;
-  codeFr: string;
-  referenceFact: string;
-  codeEmp: string;
-  dateDebutAmort: string;
-  tauxFami: number;
-
-  dateFinAmort: string;
   detailAmorts: DetailAmort[] = [];
 }

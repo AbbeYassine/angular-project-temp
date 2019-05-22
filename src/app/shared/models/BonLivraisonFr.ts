@@ -3,7 +3,7 @@ import {BonDeReception} from './BonDeReception';
 
 export class BonLivraisonFr {
   referenceFact: string;
-  dateFact: Date;
+  dateFact: string;
   codeFr: Fournisseur;
   bonDeReceptionCollection: BonDeReception[] = [];
 }
